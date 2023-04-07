@@ -8,6 +8,11 @@ using namespace std;
 int N;
 int map[101][101];
 int visited[101][101];
+int rain = 0;
+
+void bfs() {
+
+}
 
 int main() {
 	cin >> N;
@@ -18,5 +23,7 @@ int main() {
 		}
 	}
 
+
+
 	return 0;
-}
+} 
