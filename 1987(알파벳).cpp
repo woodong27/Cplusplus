@@ -46,11 +46,9 @@ int main() {
 	visited[0][0] = 1;
 	backtrack(0, 0);
 
-	/*
 	if (ans != 1) {
 		ans -= 1;
 	}
-	*/
 
 	cout << ans;
 
