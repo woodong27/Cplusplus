@@ -1,6 +1,6 @@
 #include <iostream>
 #include <algorithm>
-#include <vector>
+#include <deque>
 
 using namespace std;
 
@@ -8,7 +8,7 @@ int R, C;
 int ans = 0;
 char board[21][21];
 int visited[21][21];
-vector<char> path;
+deque<char> path;
 int di[] = { -1,1,0,0 };
 int dj[] = { 0,0,-1,1 };
 
@@ -16,13 +16,6 @@ void backtrack(int ci, int cj) {
 	if (ans < path.size()) {
 		ans = path.size();
 	}
-
-	/*
-	for (int i = 0; i < path.size(); i++) {
-		cout << path[i];
-	}
-	cout << endl;
-	*/
 
 	for (int i = 0; i < 4; i++) {
 		int ni = ci + di[i];
@@ -53,9 +46,11 @@ int main() {
 	visited[0][0] = 1;
 	backtrack(0, 0);
 
+	/*
 	if (ans != 1) {
 		ans -= 1;
 	}
+	*/
 
 	cout << ans;
 
