@@ -1,15 +1,14 @@
 #include <iostream>
 #include <algorithm>
-#include <vector>
 
 using namespace std;
 
 int ans = 0;
 int N;
-//NxN크기의 board 생성
-vector<vector<int>>board(N, vector<int>(N, 0));
-vector<int>row(N, 0);
-vector<int>col(N, 0);
+//N이 최대 15라서 15크기 배열 생성
+int board[15][15];
+int col[15];
+int row[15];
 
 bool is_promising(int i, int j) {
 	for (int ii = 0; ii < i; ii++) {
@@ -19,7 +18,6 @@ bool is_promising(int i, int j) {
 	}
 	return true;
 }
-
 
 void backtracking(int i) {
 	if (i == N) {
