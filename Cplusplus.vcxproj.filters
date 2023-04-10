@@ -23,7 +23,7 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="test.cpp">
+    <ClCompile Include="9328(열쇠).cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
