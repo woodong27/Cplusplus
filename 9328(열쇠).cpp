@@ -1,77 +1,128 @@
 #include <iostream>
-#include <tuple>
 #include <deque>
 #include <string>
 
-using namespace std;
 
-typedef struct {
-	int i;
-	int j;
-	int cnt;
-}point;
+using namespace std;
 
 int t, h, w;
 char building[101][101];
-int visited[100][100];
+int ans;
+deque<char> keys;
 int di[] = { -1,1,0,0 };
 int dj[] = { 0,0,-1,1 };
 
-void bfs(deque<point> p, deque<char> k) {
-	deque<point> q(p);
-	deque<char> keys(k);
-	while (!q.empty()) {
-		int ci, cj, cnt;
-		ci = q.front().i;
-		cj = q.front().j;
-		cnt = q.front().cnt;
-		q.pop_front();
-		for (int i = 0; i < 4; i++) {
-			int ni, nj;
-			ni = ci + di[i];
-			nj = cj + dj[i];
-			if (0 <= ni && ni <= h && 0 <= nj && nj <= w && visited[ni][nj]!=0) {
-				if (building[ni][nj] != '*') {
-
+deque<pair<int, int>> find_starts() {
+	deque<pair<int, int>> result;
+	for (int i = 0; i < h; i++) {
+		for (int j = 0; j < w; j++) {
+			if (i == 0 || i == h - 1 || j == 0 || j == w - 1) {
+				if (isalpha(building[i][j])) {
+					if (islower(building[i][j])) {
+						keys.push_back(building[i][j]);
+						building[i][j] = '.';
+						result.push_back(make_pair(i, j));
+					}
+					else if (find(keys.begin(), keys.end(), tolower(building[i][j])) != keys.end()) {
+						result.push_back(make_pair(i, j));
+					}
+				}
+				else if (building[i][j] == '$') {
+					building[i][j] = '.';
+					result.push_back(make_pair(i, j));
+					ans++;
+				}
+				else if (building[i][j] == '.') {
+					result.push_back(make_pair(i, j));
 				}
 			}
 		}
-
 	}
+	return result;
+}
+
+int bfs(deque<pair<int,int>> dq) {
+	int length = 0;
+	int visited[100][100];
+	deque<pair<int, int>> q(dq);
+	while (!q.empty()) {
+		length++;
+		int ci = q.front().first;
+		int cj = q.front().second;
+		q.pop_front();
+		if (building[ci][cj] == '$') {
+			building[ci][cj] = '.';
+			ans++;
+		}
+		for (int i = 0; i < 4; i++) {
+			int ni = ci + di[i];
+			int nj = cj + dj[i];
+			if (0 <= ni && ni < h && 0 <= nj && nj < w and visited[ni][nj]==0) {
+				if (isalpha(building[ni][nj])) {
+					if (islower(building[ni][nj])) {
+						keys.push_back(building[ni][nj]);
+						building[ni][nj] = '.';
+						q.push_back(make_pair(ni, nj));
+					}
+					else if (find(keys.begin(), keys.end(), tolower(building[ni][nj])) != keys.end()) {
+						q.push_back(make_pair(ni, nj));
+					}
+				}
+				else if (building[ni][nj] != '*') {
+					q.push_back(make_pair(ni, nj));
+				}
+				visited[ni][nj] = 1;
+			}
+		}
+	}
+	return length;
 }
 
 int main() {
 
-	int ans = 0;
 	cin >> t;
-	deque<point> starts;
-	deque<char> keys;
-
 	for (int tc = 0; tc < t; tc++) {
 
 		cin >> h >> w;
-		
-		string temp;
-
 		for (int i = 0; i < h; i++) {
 			for (int j = 0; j < w; j++) {
 				cin >> building[i][j];
-				if ((i == 0 || i == h - 1 || j == 0 || j == w - 1) && building[i][j] == '.') {
-					starts.push_back({ i,j,0 });
-				}
 			}
 		}
 
+		string temp;
 		cin >> temp;
 
+		keys.clear();
 		if (temp[0] != '0') {
 			for (int i = 0; i < temp.size(); i++) {
 				keys.push_back(temp[i]);
 			}
 		}
 
-		bfs(starts, keys)
+		ans = 0;
+		int temp1 = 0;
+		int temp2 = keys.size();
+		while (1) {
+			deque<pair<int, int>>starts(find_starts());
+			if (starts.empty()) {
+				break;
+			}
 
+			int moved_distance = bfs(starts);
+			if (moved_distance > temp1) {
+				temp1 = moved_distance;
+				temp2 = keys.size();
+			}
+			else if (keys.size() > temp2) {
+				temp2 = keys.size();
+			}
+			else {
+				break;
+			}
+		}
+
+		cout << ans << endl;
 	}
 
 	return 0;
