@@ -1,13 +1,13 @@
 #include <iostream>
 #include <deque>
 #include <string>
-
+#include <algorithm>
 
 using namespace std;
 
 int t, h, w;
 char building[101][101];
-int ans;
+int ans=0;
 deque<char> keys;
 int di[] = { -1,1,0,0 };
 int dj[] = { 0,0,-1,1 };
@@ -43,7 +43,7 @@ deque<pair<int, int>> find_starts() {
 
 int bfs(deque<pair<int,int>> dq) {
 	int length = 0;
-	int visited[100][100];
+	int visited[100][100] = { 0 };
 	deque<pair<int, int>> q(dq);
 	while (!q.empty()) {
 		length++;
@@ -57,19 +57,19 @@ int bfs(deque<pair<int,int>> dq) {
 		for (int i = 0; i < 4; i++) {
 			int ni = ci + di[i];
 			int nj = cj + dj[i];
-			if (0 <= ni && ni < h && 0 <= nj && nj < w and visited[ni][nj]==0) {
+			if ((0 <= ni && ni < h && 0 <= nj && nj < w)&&!visited[ni][nj]) {
 				if (isalpha(building[ni][nj])) {
 					if (islower(building[ni][nj])) {
 						keys.push_back(building[ni][nj]);
 						building[ni][nj] = '.';
-						q.push_back(make_pair(ni, nj));
+						q.push_back({ ni, nj });
 					}
 					else if (find(keys.begin(), keys.end(), tolower(building[ni][nj])) != keys.end()) {
-						q.push_back(make_pair(ni, nj));
+						q.push_back({ ni, nj });
 					}
 				}
 				else if (building[ni][nj] != '*') {
-					q.push_back(make_pair(ni, nj));
+					q.push_back({ ni, nj });
 				}
 				visited[ni][nj] = 1;
 			}
@@ -121,8 +121,8 @@ int main() {
 				break;
 			}
 		}
-
 		cout << ans << endl;
+
 	}
 
 	return 0;

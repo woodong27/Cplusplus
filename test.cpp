@@ -6,9 +6,10 @@ using namespace std;
 
 int main() {
 
-	deque<pair<pair<int, int>, int>> temp;
+	char a = '$';
 
-	temp.push_back({ {1,1},1 });
+	cout << isalpha(a) << endl;
+	cout << islower(a) << endl;
 
-	cout << temp.front().first.first << temp.front().first.second << temp.front().second << endl;
+	return 0;
 }
