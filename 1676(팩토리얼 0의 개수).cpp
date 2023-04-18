@@ -5,30 +5,20 @@
 using namespace std;
 
 int N;
-int result = 1;
 
 int main() {
 	ios_base::sync_with_stdio(0);
 	cin.tie(0); cout.tie(0);
 
 	cin >> N;
-	for (int i = 1; i <= N; i++) {
-		result *= i;
-	}
 
-	string result_str = to_string(result);
+	int mul5 = N / 5;
+	int mul25 = N / 25;
+	int mul125 = N / 125;
 
-	int cnt = 0;
-	for (int i = result_str.size() - 1; i >= 0; i--) {
-		if (result_str[i] != '0') {
-			break;
-		}
-		else {
-			cnt++;
-		}
-	}
+	int ans = mul5 + mul25 + mul125;
 
-	cout << cnt << '\n';
+	cout << ans << '\n';
 
 	return 0;
 }

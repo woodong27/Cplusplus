@@ -23,7 +23,7 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="1676%28팩토리얼 0의 개수%29.cpp">
+    <ClCompile Include="9461%28파도반수열%29.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
