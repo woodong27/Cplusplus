@@ -3,17 +3,18 @@
 #include <tuple>
 #include <vector>
 #include <algorithm>
+#include <string>
 
 using namespace std;
 
 int main() {
 
-	vector<int> temp;
-	temp.push_back(10);
-	temp.push_back(30);
-	temp.push_back(5);
+	string temp;
+	temp += 'a';
+	temp += 'b';
+	temp += 'c';
 
-	int minv = *min_element(temp.begin(), temp.end());
+	cout << temp << endl;
 
-	cout << minv;
+	return 0;
 }
