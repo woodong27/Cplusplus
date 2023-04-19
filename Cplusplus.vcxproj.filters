@@ -23,7 +23,7 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="16928%28뱀과사다리게임%29.cpp">
+    <ClCompile Include="2206%28벽부수고이동하기%29.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
