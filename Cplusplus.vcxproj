@@ -22,9 +22,6 @@
     <Text Include="input.txt" />
     <Text Include="output.txt" />
   </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="2206%28벽부수고이동하기%29.cpp" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
