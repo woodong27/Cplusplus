@@ -10,39 +10,12 @@ int visited[100][100];
 char jail[101][101];
 int di[] = { 0,0,-1,1 };
 int dj[] = { -1,1,0,0 };
-int prisoners;
+deque<pair<pair<int, int>,int>> prisoners_position;
 
-int bfs(int si, int sj, int is_opened) {
-	int catched_num = 0;
-	int result = 0;
-	
-	deque<pair<pair<int, int>, int>> q;
+int bfs(int si, int sj, int scnt) {
 	memset(visited, 0, sizeof(visited));
-	visited[si][sj] = 1;
-	q.push_back({ {si,sj},is_opened });
 
-	while (!q.empty()) {
-		int ci = q.front().first.first;
-		int cj = q.front().first.second;
-		int opened=q.front().second;
-		if (jail[ci][cj] == '$') {
-			catched_num++;
-			result += opened;
-			if (catched_num == prisoners) {
-				return result;
-			}
-		}
-		q.pop_front();
-		for (int i = 0; i < 4; i++) {
-			int ni = ci + di[i];
-			int nj = cj + dj[i];
-			if (0 <= ni && ni < h && 0 <= nj && nj < w) {
-				if (!visited[ni][nj]) {
 
-				}
-			}
-		}
-	}
 }
 
 int main() {
@@ -54,17 +27,12 @@ int main() {
 	while (t--) {
 		cin >> h >> w;
 		
+		prisoners_position.clear();
 		for (int i = 0; i < h; i++) {
 			for (int j = 0; j < w; j++) {
 				cin >> jail[i][j];
-			}
-		}
-
-		prisoners = 0;
-		for (int i = 0; i < h; i++) {
-			for (int j = 0; j < w; j++) {
 				if (jail[i][j] == '$') {
-					prisoners++;
+					prisoners_position.push_back({ { i,j },0 });
 				}
 			}
 		}
