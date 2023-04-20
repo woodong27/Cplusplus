@@ -9,6 +9,8 @@ using namespace std;
 
 int main() {
 
+	int visited[10000000000][10000000000] = { 0 };
+
 	string temp;
 	temp += 'a';
 	temp += 'b';
