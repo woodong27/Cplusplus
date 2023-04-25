@@ -26,7 +26,7 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LinkedList.cpp">
+    <ClCompile Include="Temp.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

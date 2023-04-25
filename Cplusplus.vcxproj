@@ -24,7 +24,7 @@
     <Text Include="sample_input.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="LinkedList.cpp" />
+    <ClCompile Include="Temp.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
