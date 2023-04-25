@@ -26,10 +26,7 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="solution.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="LinkedList.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
