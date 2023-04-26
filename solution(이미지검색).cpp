@@ -42,11 +42,11 @@ int findImage(char mImage[MAX_M][MAX_M]) {
 
 	int ansId = 0;
 	int minCnt = 100;
+	int cnt;
 	bitset<100> temp;
-	for (int i = 0; i < myM; i++) {
+	for (int i = 0; i < myN; i++) {
 		temp = compareImage ^ images[i];
-		int cnt = temp.count();
-		cout << cnt << endl;
+		cnt = temp.count();
 		if (minCnt > cnt) {
 			minCnt = cnt;
 			ansId = i + 1;

@@ -25,8 +25,8 @@
     <Text Include="sample_output.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="solution.cpp" />
+    <ClCompile Include="main%28동선추적%29.cpp" />
+    <ClCompile Include="Solution%28동선추적%29.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

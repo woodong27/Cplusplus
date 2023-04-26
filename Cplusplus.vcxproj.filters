@@ -29,10 +29,10 @@
     </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="main%28동선추적%29.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="solution.cpp">
+    <ClCompile Include="Solution%28동선추적%29.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
