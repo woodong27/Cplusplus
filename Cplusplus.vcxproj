@@ -22,9 +22,11 @@
     <Text Include="input.txt" />
     <Text Include="output.txt" />
     <Text Include="sample_input.txt" />
+    <Text Include="sample_output.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Temp.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="solution.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

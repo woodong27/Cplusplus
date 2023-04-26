@@ -24,9 +24,15 @@
     <Text Include="sample_input.txt">
       <Filter>리소스 파일</Filter>
     </Text>
+    <Text Include="sample_output.txt">
+      <Filter>리소스 파일</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Temp.cpp">
+    <ClCompile Include="main.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="solution.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
