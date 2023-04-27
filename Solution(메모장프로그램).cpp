@@ -1,8 +1,6 @@
 #include <iostream>
 #include <algorithm>
 #include <list>
-#include <vector>
-#include <string>
 
 using namespace std;
 
@@ -28,21 +26,27 @@ void insert(char mChar) {
 char moveCursor(int mRow, int mCol) {
 	// mRow행 mCol열 문자의 왼쪽으로 커서를 이동
 	// 커서의 다음 문자나, 마지막 문자일 경우 $를 반환
+	// mRow행 : i
+	// mCol열 : j
 	cursor = words.begin();
-	for (int i = 0; i < mRow * mCol; i++) {
+	int pos = (mRow - 1) * w + (mCol - 1);
+	for (int i = 0; i < pos; i++) {
 		cursor++;
+		if (cursor == words.end()) {
+			return '$';
+		}
 	}
-	if (cursor == words.end()) {
-		return '$';
-	}
-	else {
-		return *cursor;
-	}
+	return *cursor;
 }
 
 int countCharacter(char mChar) {
 	// 커서 뒤쪽 문자열에서 mChar문자의 갯수를 반환
-	int cur = 
+	int cnt = 0;
+	for (cursor; cursor != words.end(); cursor++) {
+		if (*cursor == mChar) {
+			cnt++;
+		}
+	}
 
-	return -1;
+	return cnt;
 }
