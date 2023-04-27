@@ -1,5 +1,6 @@
 #include <iostream>
 #include <bitset>
+#include <list>
 
 using namespace std;
 
