@@ -28,6 +28,7 @@ void init(int N, int M, char mImageList[MAX_N][MAX_M][MAX_M]) {
 			}
 		}
 	}
+	cout << 1 << endl;
 }
 
 
