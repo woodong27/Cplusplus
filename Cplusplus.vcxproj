@@ -25,9 +25,7 @@
     <Text Include="sample_output.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main(이미지검색).cpp" />
-    <ClCompile Include="solution(이미지검색).cpp" />
-    <ClCompile Include="Temp.cpp" />
+    <ClCompile Include="14502%28연구소%29.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
