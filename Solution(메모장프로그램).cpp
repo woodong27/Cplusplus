@@ -28,13 +28,16 @@ void init(int H, int W, char mStr[]) {
 void insert(char mChar) {
 	// 현재 커서 위치에 mChar을 삽입
 	words[ci].insert(words[ci].begin()+cj, mChar);
-	int temp = ci;
+	/*
+		int temp = ci;
 	while (words[temp].size() > w) {
 		char last = words[temp].back();
 		words[temp].pop_back();
 		words[temp + 1].push_front(last);
 		temp++;
 	}
+	*/
+
 }
 
 char moveCursor(int mRow, int mCol) {
