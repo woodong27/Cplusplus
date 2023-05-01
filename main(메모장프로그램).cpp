@@ -73,18 +73,26 @@ static bool run()
 	return correct;
 }
 
+#include <ctime>
 int main()
-{
+{	
 	setbuf(stdout, NULL);
 	freopen("sample_input.txt", "r", stdin);
+
+	clock_t start, finish;
 
 	int T, MARK;
 	scanf("%d %d", &T, &MARK);
 
 	for (int tc = 1; tc <= T; tc++)
-	{
+	{	
+		start = clock();
 		int score = run() ? MARK : 0;
 		printf("#%d %d\n", tc, score);
+		finish = clock();
+		double duration = (double)(finish - start) / CLOCKS_PER_SEC;
+		printf("%f ÃÊ\n", duration);
 	}
+
 	return 0;
 }
