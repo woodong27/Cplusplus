@@ -27,6 +27,10 @@ void init(int H, int W, char mStr[]) {
 
 void insert(char mChar) {
 	// 현재 커서 위치에 mChar을 삽입
+	if (words[ci][cj]) {
+		
+	}
+
 	words[ci].insert(words[ci].begin()+cj, mChar);
 	/*
 		int temp = ci;
