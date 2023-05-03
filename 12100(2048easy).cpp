@@ -1,6 +1,7 @@
 #include <iostream>
 #include <algorithm>
 #include <deque>
+#include <string>
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int ans = 0;
 
 // 똑같은 수가 세개 있으면 이동하려는 방향의 칸이 먼져 합쳐지게 됨
 void moving(int id, int jd) {
-	deque<int> temp;
+	deque<pair<int, int>> temp;
 
 	// 왼쪽으로 이동
 	if (jd == -1) {
@@ -21,21 +22,24 @@ void moving(int id, int jd) {
 			temp.clear();
 			for (int j = 0; j < n; j++) {
 				if (board[i][j]) {
-					if (!temp.empty() && temp.back() == board[i][j]) {
-						int popped = temp.back();
-						temp.pop_back();
-						temp.push_back(popped * 2);
+					if (temp.empty()) {
+						temp.push_back({ board[i][j],0 });
 					}
 					else {
-						temp.push_back(board[i][j]);
+						if (temp.back().first == board[i][j] && !temp.back().second) {
+							temp.back().second = board[i][j];
+						}
+						else {
+							temp.push_back({ board[i][j],0 });
+						}
 					}
 				}
 			}
 			while (temp.size() < n) {
-				temp.push_back(0);
+				temp.push_back({0,0});
 			}
 			for (int j = 0; j < n; j++) {
-				board[i][j] = temp[j];
+				board[i][j] = temp[j].first+temp[j].second;
 			}
 		}
 	}
@@ -46,21 +50,24 @@ void moving(int id, int jd) {
 			temp.clear();
 			for (int j = n - 1; j >= 0; j--) {
 				if (board[i][j]) {
-					if (!temp.empty() && temp.front() == board[i][j]) {
-						int popped = temp.front();
-						temp.pop_front();
-						temp.push_front(popped * 2);
+					if (temp.empty()) {
+						temp.push_front({ board[i][j],0 });
 					}
 					else {
-						temp.push_front(board[i][j]);
+						if (temp.front().first == board[i][j] && !temp.front().second) {
+							temp.front().second = board[i][j];
+						}
+						else {
+							temp.push_front({ board[i][j],0 });
+						}
 					}
 				}
 			}
 			while (temp.size() < n) {
-				temp.push_front(0);
+				temp.push_front({ 0,0 });
 			}
 			for (int j = n - 1; j >= 0; j--) {
-				board[i][j] = temp[j];
+				board[i][j] = temp[j].first + temp[j].second;
 			}
 		}
 	}
@@ -71,21 +78,24 @@ void moving(int id, int jd) {
 			temp.clear();
 			for (int i = 0; i < n; i++) {
 				if (board[i][j]) {
-					if (!temp.empty() && temp.back() == board[i][j]) {
-						int popped = temp.back();
-						temp.pop_back();
-						temp.push_back(popped * 2);
+					if (temp.empty()) {
+						temp.push_back({ board[i][j],0 });
 					}
 					else {
-						temp.push_back(board[i][j]);
+						if (temp.back().first == board[i][j] && !temp.back().second) {
+							temp.back().second = board[i][j];
+						}
+						else {
+							temp.push_back({ board[i][j],0 });
+						}
 					}
 				}
 			}
 			while (temp.size() < n) {
-				temp.push_back(0);
+				temp.push_back({ 0,0 });
 			}
 			for (int i = 0; i < n; i++) {
-				board[i][j] = temp[i];
+				board[i][j] = temp[i].first+temp[i].second;
 			}
 		}
 	}
@@ -96,21 +106,24 @@ void moving(int id, int jd) {
 			temp.clear();
 			for (int i = n - 1; i >= 0; i--) {
 				if (board[i][j]) {
-					if (!temp.empty() && temp.front() == board[i][j]) {
-						int popped = temp.front();
-						temp.pop_front();
-						temp.push_front(popped * 2);
+					if (temp.empty()) {
+						temp.push_front({ board[i][j],0 });
 					}
 					else {
-						temp.push_front(board[i][j]);
+						if (temp.front().first == board[i][j] && !temp.front().second) {
+							temp.front().second = board[i][j];
+						}
+						else {
+							temp.push_front({ board[i][j],0 });
+						}
 					}
 				}
 			}
 			while (temp.size() < n) {
-				temp.push_front(0);
+				temp.push_front({ 0,0 });
 			}
 			for (int i = n - 1; i >= 0; i--) {
-				board[i][j] = temp[i];
+				board[i][j] = temp[i].first + temp[i].second;
 			}
 		}
 	}
@@ -127,15 +140,6 @@ void backtrack(int cnt) {
 	for (int i = 0; i < 4; i++) {
 		copy(&board[0][0], &board[0][0] + 400, &copied_board[cnt][0][0]);
 		moving(di[i], dj[i]);
-
-		for (int i = 0; i < n; i++) {
-			for (int j = 0; j < n; j++) {
-				cout << board[i][j] << ' ';
-			}
-			cout << endl;
-		}
-		cout << endl;
-			
 		backtrack(cnt + 1);
 		copy(&copied_board[cnt][0][0], &copied_board[cnt][0][0] + 400, &board[0][0]);
 	}
