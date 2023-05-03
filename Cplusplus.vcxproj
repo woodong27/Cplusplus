@@ -25,7 +25,8 @@
     <Text Include="sample_output.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="12100(2048easy).cpp" />
+    <ClCompile Include="main(메모장프로그램).cpp" />
+    <ClCompile Include="Solution(메모장프로그램).cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

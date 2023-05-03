@@ -27,21 +27,20 @@ void init(int H, int W, char mStr[]) {
 
 void insert(char mChar) {
 	// 현재 커서 위치에 mChar을 삽입
-	if (words[ci][cj]) {
+	if (words[ci].size() < cj) {
+		words[ci].push_back(mChar);
 		
-	}
-
-	words[ci].insert(words[ci].begin()+cj, mChar);
-	/*
 		int temp = ci;
-	while (words[temp].size() > w) {
-		char last = words[temp].back();
-		words[temp].pop_back();
-		words[temp + 1].push_front(last);
-		temp++;
+		while (words[temp].size() > w) {
+			char last = words[temp].back();
+			words[temp].pop_back();
+			words[temp + 1].push_front(last);
+			temp++;
+		}
 	}
-	*/
-
+	else {
+		words[ci].insert(words[ci].begin() + cj, mChar);
+	}
 }
 
 char moveCursor(int mRow, int mCol) {
@@ -51,13 +50,24 @@ char moveCursor(int mRow, int mCol) {
 	// mCol열 : j
 	ci = mRow - 1;
 	cj = mCol - 1;
-
-	return '$';
+	if (words[ci].size() <= cj) {
+		return '$';
+	}
+	else {
+		return words[ci][cj];
+	}
 }
 
 int countCharacter(char mChar) {
 	// 커서 뒤쪽 문자열에서 mChar문자의 갯수를 반환
+	int cnt = 0;
+	for (int i = ci; i < h; i++) {
+		for (int j = cj; j < words[i].size(); j++) {
+			if (words[ci][cj] && words[ci][cj] == mChar) {
+				cnt++;
+			}
+		}
+	}
 
-
-	return 0;
+	return cnt;
 }
