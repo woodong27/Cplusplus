@@ -15,18 +15,9 @@ void check_row(int si, int sj) {
 		temp.push_back(map[si][j]);
 	}
 
-	int cur = temp.front();
-	while (!temp.empty()) {
-		if (cur == temp.front()) {
-			cur = temp.front();
-			temp.pop_front();
-		}
-		else {
-
-		}
-
-		if (temp.empty()) {
-
+	for (int i = 0; i < n - l; i++) {
+		for (int j = 1; j <= l; j++) {
+			if ()
 		}
 	}
 }
@@ -37,6 +28,7 @@ void check_col(int si, int sj) {
 		temp.push_back(map[i][sj]);
 	}
 
+	
 }
 
 int main() {
