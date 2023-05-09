@@ -9,26 +9,43 @@ int n, l;
 int map[100][100];
 int ans = 0;
 
-void check_row(int si, int sj) {
-	deque<int> temp;
-	for (int j = 0; j < n; j++) {
-		temp.push_back(map[si][j]);
+int check_row(int si, int sj) {
+	deque<int> road;
+	for (int i = 0; i < n; i++) {
+		road.push_back(map[i][sj]);
 	}
-
-	for (int i = 0; i < n - l; i++) {
-		for (int j = 1; j <= l; j++) {
-			if ()
+	
+	for (int i = 0; i < n; i++) {
+		if (road[i] - road[i + 1] == 1) {
+			for (int j = 0; i < l; j++) {
+				if(road[i+1+j])
+			}
 		}
 	}
+	
+
+	cout << "row 성공" << endl;
+
+	return 1;
 }
 
-void check_col(int si, int sj) {
-	deque<int> temp;
-	for (int i = 0; i < n; i++) {
-		temp.push_back(map[i][sj]);
+int check_col(int si, int sj) {
+	deque<int> road;
+	for (int j = 0; j < n; j++) {
+		road.push_back(map[si][j]);
+	}
+	
+	int cnt = 0;
+	for (int i = 0; i < n-1; i++) {
+		if (road[i] - road[i + 1] == 1) {
+			cnt++;
+		}
+
 	}
 
-	
+	cout << "col 성공" << endl;
+
+	return 1;
 }
 
 int main() {
@@ -45,14 +62,18 @@ int main() {
 
 	for (int i = 0; i < n; i++) {
 		for (int j = 0; j < n; j++) {
-			if (i == 0) {
-				check_col(i,j);
-			}
 			if (j == 0) {
-				check_row(i,j);
+				cout << i << ',' << j << endl;
+				ans += check_col(i,j);
+			}
+			if (i == 0) {
+				cout << i << ',' << j << endl;
+				ans += check_row(i,j);
 			}
 		}
 	}
+
+	cout << ans << endl;
 
 	return 0;
 }
