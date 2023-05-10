@@ -15,10 +15,25 @@ int check_row(int si, int sj) {
 		road.push_back(map[i][sj]);
 	}
 	
-	for (int i = 0; i < n; i++) {
-		if (road[i] - road[i + 1] == 1) {
-			for (int j = 0; i < l; j++) {
-				if(road[i+1+j])
+	deque<int> temp(road);
+	int cnt = 0;
+	int current = temp.front();
+	temp.pop_front();
+	int i = 1;
+	while (!temp.empty()) {
+		if (!cnt) {
+			if (current == temp.front()) {
+				i++;
+				temp.pop_front();
+			}
+			else if (current - temp.front() == 1) {
+				current = temp.front();
+				temp.pop_front();
+				i++;
+				cnt++;
+			}
+			else if (current - temp.front() == -1) {
+				if ()
 			}
 		}
 	}
